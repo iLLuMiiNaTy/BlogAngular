@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --rosa-fucsia: #fd2b7c;
+  --rosa-clarito:rgb(255, 230, 240);
+  --rosa-caramelo:rgb(253, 151, 192);;
+  --morado: #5c106b;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('./assets/fonts/static/Raleway-Medium.ttf');
+}
+
+h1,
+h2,
+h3,
+textarea,
+input,
+button,
+p {
+    font-family: 'Raleway';
+}
+body{
+  scrollbar-color: var(--rosa-fucsia) var(--rosa-clarito);
+}

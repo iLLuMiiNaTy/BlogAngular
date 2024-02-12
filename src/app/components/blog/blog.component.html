@@ -1,0 +1,70 @@
+<header class="cabecera">
+  <img src="./assets/img/hader_img.jpg">
+</header>
+
+<div class="contenedor__blog-titulo">
+  <h1 class="blog__titulo">En esta página puedes crear todas las noticias que quieras</h1>
+</div>
+
+
+<!-- <input type="text" [(ngModel)]="palabraClave" placeholder="Buscar...">
+<button (click)="filtrarNoticias()">Buscar</button>
+@for(noticia of filtrarNoticias(); track noticia){
+ <div></div>
+} -->
+
+<div class="wrapper">
+
+  <div class="contenedor__contenido--blog">
+
+    <div class="blog__contenedor--formulario">
+
+      <form class="contenedor__formulario" (submit)="agregarNoticia()">
+        <h2 class="contenedor__formulario--titulo">Publicar noticia</h2>
+        <label>Título:</label><br>
+        <input type="text" [(ngModel)]="nuevaNoticia.titulo" name="titulo"><br>
+        <label>Autor/a:</label><br>
+        <input type="text" [(ngModel)]="nuevaNoticia.author" name="author"><br>
+        <label>URL de la imagen:</label><br>
+        <input type="text" [(ngModel)]="nuevaNoticia.imagen" name="imagen"><br>
+        <label>Texto:</label><br>
+        <textarea [(ngModel)]="nuevaNoticia.texto" name="texto"></textarea><br>
+        <button class="boton__publicar" type="submit">Publicar</button>
+      </form>
+
+      <input class="buscador" type="text" [(ngModel)]="palabraClave" placeholder="Buscar noticia"
+        (input)="actualizarSugerencias()">
+      <ul class="sugerencias-length" *ngIf="sugerencias.length > 0">
+        <li class="sugerencia-sugerencia" *ngFor="let sugerencia of sugerencias" (click)="seleccionarSugerencia(sugerencia)">{{ sugerencia }}</li>
+      </ul>
+
+      <div *ngIf="noticiaSeleccionada">
+        <div>
+          <h2 class="noticias__titulo">{{ noticiaSeleccionada.titulo }}</h2>
+          <p class="noticias__texto">{{ noticiaSeleccionada.texto }}</p>
+          <p class="noticias__authorbuscador">{{ noticiaSeleccionada.author }}</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="blog__contenedor--noticias">
+      <h2 class="contenedor--noticias__titulo">Noticias</h2>
+      @for(noticia of noticias; track noticia){
+      <div class="contenedor__noticias">
+        <h3 class="noticias__titulo">{{ noticia.titulo }}</h3>
+        <div class="contenedor__noticia-imagen">
+          <img class="noticias__img" [src]="noticia.imagen" alt="{{ noticia.titulo }}">
+          <p class="noticias__texto">{{ noticia.texto }}</p>
+          <p class="noticias__author">{{ noticia.author }}</p>
+        </div>
+        <div class="contenedor__fecha-boton">
+          <p class="noticias__fecha">Fecha de publicación: {{ noticia.fecha | date:'dd/MM/yyyy HH:mm:ss' }}</p>
+          <button class="noticias__boton-eliminar" (click)="borrarNoticia(noticia)">Eliminar</button>
+        </div>
+      </div>
+      }
+    </div>
+
+  </div>
+</div>
