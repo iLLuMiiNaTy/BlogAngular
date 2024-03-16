@@ -1,9 +1,9 @@
-<header class="cabecera">
+<header class="entete">
   <img src="./assets/img/hader_img.jpg">
 </header>
 
-<div class="contenedor__blog-titulo">
-  <h1 class="blog__titulo">En esta página puedes crear todas las noticias que quieras</h1>
+<div class="container__blog-titre">
+  <h1 class="blog__titre">Sur cette page, vous pouvez créer tous les blogs que vous voulez !</h1>
 </div>
 
 
@@ -15,56 +15,66 @@
 
 <div class="wrapper">
 
-  <div class="contenedor__contenido--blog">
+  <div class="container__contient--blog">
 
-    <div class="blog__contenedor--formulario">
+    <div class="blog__container--formulaire">
 
-      <form class="contenedor__formulario" (submit)="agregarNoticia()">
-        <h2 class="contenedor__formulario--titulo">Publicar noticia</h2>
-        <label>Título:</label><br>
-        <input type="text" [(ngModel)]="nuevaNoticia.titulo" name="titulo"><br>
-        <label>Autor/a:</label><br>
-        <input type="text" [(ngModel)]="nuevaNoticia.author" name="author"><br>
-        <label>URL de la imagen:</label><br>
-        <input type="text" [(ngModel)]="nuevaNoticia.imagen" name="imagen"><br>
-        <label>Texto:</label><br>
-        <textarea [(ngModel)]="nuevaNoticia.texto" name="texto"></textarea><br>
-        <button class="boton__publicar" type="submit">Publicar</button>
+      <form class="container__formulaire" (submit)="ajouterBlog()">
+        <h2 class="container__formulaire--titre">Ajouter un blog</h2>
+        <label>Titre:</label><br>
+        <input type="text" [(ngModel)]="nouveauBlog.titre" name="titre"><br>
+        <label>Auteur/e:</label><br>
+        <input type="text" [(ngModel)]="nouveauBlog.auteur" name="auteur"><br>
+        <label>URL de l'image':</label><br>
+        <input type="text" [(ngModel)]="nouveauBlog.image" name="image"><br>
+        <label>Texte:</label><br>
+        <textarea [(ngModel)]="nouveauBlog.text" name="text"></textarea><br>
+        <button class="bouton__publier" type="submit">Publier</button>
       </form>
+      
+      
 
-      <input class="buscador" type="text" [(ngModel)]="palabraClave" placeholder="Buscar noticia"
-        (input)="actualizarSugerencias()">
-      <ul class="sugerencias-length" *ngIf="sugerencias.length > 0">
-        <li class="sugerencia-sugerencia" *ngFor="let sugerencia of sugerencias" (click)="seleccionarSugerencia(sugerencia)">{{ sugerencia }}</li>
+      <!-- 
+        <input class="recherche" type="text" [(ngModel)]="keyWord" placeholder="Rechercher un blog"
+        (input)="actualiserSuggestions()">
+      <ul class="suggestion-length" *ngIf="suggestions.length > 0">
+        <li class="suggestion-suggestion" *ngFor="let suggestions of suggestions" (click)="selectionnerSuggestion(suggestions)">{{ suggestions }}</li>
       </ul>
+      -->
 
-      <div *ngIf="noticiaSeleccionada">
+      <div *ngIf="blogSelectionne">
         <div>
-          <h2 class="noticias__titulo">{{ noticiaSeleccionada.titulo }}</h2>
-          <p class="noticias__texto">{{ noticiaSeleccionada.texto }}</p>
-          <p class="noticias__authorbuscador">{{ noticiaSeleccionada.author }}</p>
+          <h2 class="blog__titre">{{ blogSelectionne.titre }}</h2>
+          <p class="blog__text">{{ blogSelectionne.text }}</p>
+          <p class="blog__recherche-auteur">{{ blogSelectionne.auteur }}</p>
         </div>
       </div>
     </div>
 
 
-    <div class="blog__contenedor--noticias">
-      <h2 class="contenedor--noticias__titulo">Noticias</h2>
-      @for(noticia of noticias; track noticia){
-      <div class="contenedor__noticias">
-        <h3 class="noticias__titulo">{{ noticia.titulo }}</h3>
+
+
+    <div class="blog__container--blogs">
+      <h2 class="container--blogs__titre">Blogs</h2>
+      @for(blog of blogs; track blog){
+      <div class="container__blogs">
+        <h3 class="blog__titre">{{ blog.titre }}</h3>
+
+        <h3 class="blog__titre">{{ blog.id }}</h3>
+
         <div class="contenedor__noticia-imagen">
-          <img class="noticias__img" [src]="noticia.imagen" alt="{{ noticia.titulo }}">
-          <p class="noticias__texto">{{ noticia.texto }}</p>
-          <p class="noticias__author">{{ noticia.author }}</p>
+          <img class="blogs__img" [src]="blog.image" alt="{{ blog.titre }}">
+          <p class="blog__text">{{ blog.text }}</p>
+          <p class="blog__ajouterExempleBlo">{{ blog.auteur }}</p>
         </div>
-        <div class="contenedor__fecha-boton">
-          <p class="noticias__fecha">Fecha de publicación: {{ noticia.fecha | date:'dd/MM/yyyy HH:mm:ss' }}</p>
-          <button class="noticias__boton-eliminar" (click)="borrarNoticia(noticia)">Eliminar</button>
+        <div class="container__date-bouton">
+          <p class="blog__date">Date de publication: {{ blog.date }}</p>
+          <button class="blog__bouton-supprimer" (click)="supprimerBlog(blog.id)">Supprimer</button>
         </div>
       </div>
       }
     </div>
+    
 
   </div>
 </div>
