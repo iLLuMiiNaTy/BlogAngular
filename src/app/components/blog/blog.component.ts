@@ -1,18 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Blog } from './blog';
 import { FormsModule } from '@angular/forms';
 import jsonData from "./Model/blogs.json";
 import moment from 'moment';
 
-
-interface Blog {
-  titre: string;
-  image: string;
-  text: string;
-  auteur: string;
-  date: string;
-  id: number;
-}
 
 @Component({
   selector: 'app-blog',
@@ -23,13 +16,12 @@ interface Blog {
 })
 
 export class BlogComponent implements OnInit {
-  //blogs: any[] = jsonData.blogs;
   
   blogs: Blog[] = jsonData.blogs;
 
   nouveauBlog = {
     titre: '',
-    image: '',
+    imageUrl: '',
     text: '',
     auteur: '',
     date: '',
@@ -54,7 +46,7 @@ export class BlogComponent implements OnInit {
   }*/
 
   ajouterBlog() {
-    if (this.nouveauBlog.titre && this.nouveauBlog.image && this.nouveauBlog.text) {
+    if (this.nouveauBlog.titre && this.nouveauBlog.imageUrl && this.nouveauBlog.text) {
       const dateAujourdHui = new Date();
       const dateFormatee = moment(dateAujourdHui).format('DD/MM/YYYY');
       this.nouveauBlog.date = dateFormatee;
@@ -62,7 +54,7 @@ export class BlogComponent implements OnInit {
       localStorage.setItem('blogs', JSON.stringify(this.blogs));
       this.nouveauBlog = {
         titre: '',
-        image: '',
+        imageUrl: '',
         text: '',
         auteur: '',
         date: '',

@@ -7,6 +7,7 @@
 </div>
 
 
+
 <!-- <input type="text" [(ngModel)]="palabraClave" placeholder="Buscar...">
 <button (click)="filtrarNoticias()">Buscar</button>
 @for(noticia of filtrarNoticias(); track noticia){
@@ -26,7 +27,7 @@
         <label>Auteur/e:</label><br>
         <input type="text" [(ngModel)]="nouveauBlog.auteur" name="auteur"><br>
         <label>URL de l'image':</label><br>
-        <input type="text" [(ngModel)]="nouveauBlog.image" name="image"><br>
+        <input type="text" [(ngModel)]="nouveauBlog.imageUrl" name="image"><br>
         <label>Texte:</label><br>
         <textarea [(ngModel)]="nouveauBlog.text" name="text"></textarea><br>
         <button class="bouton__publier" type="submit">Publier</button>
@@ -63,7 +64,7 @@
         <h3 class="blog__titre">{{ blog.id }}</h3>
 
         <div class="contenedor__noticia-imagen">
-          <img class="blogs__img" [src]="blog.image" alt="{{ blog.titre }}">
+          <img class="blogs__img" [src]="blog.imageUrl" alt="{{ blog.titre }}">
           <p class="blog__text">{{ blog.text }}</p>
           <p class="blog__ajouterExempleBlo">{{ blog.auteur }}</p>
         </div>
